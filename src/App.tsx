@@ -79,7 +79,8 @@ export default function App() {
     e.preventDefault();
     setIsAdminLoading(true);
     try {
-      const response = await fetch(`/api/admin/emails?secret=${adminPassword}`);
+      const cleanPassword = adminPassword.trim();
+      const response = await fetch(`/api/admin/emails?secret=${encodeURIComponent(cleanPassword)}`);
       if (response.ok) {
         const data = await response.json();
         setCollectedEmails(data);
