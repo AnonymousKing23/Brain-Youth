@@ -48,7 +48,7 @@ async function startServer() {
   // Admin API to fetch emails (protected by simple secret in demo)
   app.get("/api/admin/emails", (req, res) => {
     const secret = req.query.secret;
-    const ADMIN_SECRET = process.env.ADMIN_SECRET || "brainyouth2026";
+    const ADMIN_SECRET = "brainyouth2026";
 
     if (secret !== ADMIN_SECRET) {
       return res.status(401).json({ error: "Unauthorized" });
